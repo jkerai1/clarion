@@ -1,4 +1,8 @@
-from flask import Flask, request, send_file
+from flask import Flask, request, send_file#
+
+##if Teams webhook alerting wanted - uncomment below :
+#import pymsteams
+#myTeamsMessage = pymsteams.connectorcard("<Microsoft Webhook URL>") #replace with Teams Webhook URL
 
 pixel_filename = "companyBranding.png"
 allowed_referers = ['login.microsoftonline.com',
@@ -25,6 +29,11 @@ def pixel():
         print("[*] Debug Information:")
         print(f"[*] Requester IP (user logging in): {requester_ip}")
         print(f"[*] Referer header (AitM): {referer_header}")
+
+        #Teams Webhook
+        #myTeamsMessage.text(f"[*] Requester IP (user logging in): {requester_ip} & Referer header (AitM): {referer_header}")
+        #myTeamsMessage.send()
+        
     return send_file(filename, mimetype='image/png',as_attachment=False)
 
 def main():
