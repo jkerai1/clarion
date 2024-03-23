@@ -1,5 +1,4 @@
 from flask import Flask, request, send_file
-import requests
 
 pixel_filename = "companyBranding.png"
 allowed_referers = ['login.microsoftonline.com',
@@ -26,7 +25,7 @@ def pixel():
         print("[*] Debug Information:")
         print(f"[*] Requester IP (user logging in): {requester_ip}")
         print(f"[*] Referer header (AitM): {referer_header}")
-    return send_file(filename, mimetype='image/png')
+    return send_file(filename, mimetype='image/png',as_attachment=False)
 
 def main():
         app.run()
